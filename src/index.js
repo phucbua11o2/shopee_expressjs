@@ -12,7 +12,7 @@ const flash = require('connect-flash');
 const YOUR_DOMAIN = 'http://localhost:3000/';
 const express_handlebars_sections = require('express-handlebars-sections');
 const app = express();
-const port = 3000;
+const port = process.env.PORT ||3000;
 
 const route = require('./routes');
 
