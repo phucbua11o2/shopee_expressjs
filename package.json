@@ -1,4 +1,5 @@
 {
+  "homepage": "http://phucbua11o2.github.io/shopee_nodejs/",
   "name": "shopee_ex",
   "version": "1.0.0",
   "description": "",
@@ -30,6 +31,7 @@
     "stripe": "^8.210.0"
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.5",
     "morgan": "^1.10.0",
