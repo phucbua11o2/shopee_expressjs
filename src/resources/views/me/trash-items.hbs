@@ -1,0 +1,154 @@
+<form name="container-form-item" class="grid" method="POST" action="/items/handle-trash-form-actions">
+  <div class="mt-4">
+    <div>
+      <a href="/me/stored/items">Danh sách khóa học</a>
+      <h3>Sản phẩm đã xóa</h3>
+      <div class="mt-4 d-flex align-items-center">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+          <label class="form-check-label" for="checkbox-all">
+              Chọn tất cả
+          </label>
+        </div>
+        <select class="form-control form-control-lg checkbox-select-all-options" name="action" required>
+          <option value="">-- Chọn hành động --</option>
+          <option value="restore">Khôi phục</option>
+          <option value="destroy">Xóa vĩnh viễn</option>
+        </select>
+        <button class="btn btn-primary btn-sm btn-check-all-submit disabled">Thực hiện</button>
+      </div>
+    </div>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+            <th scope="col" colspan="2">#</th>
+            <th scope="col">Mô tả</th>
+            <th scope="col">Giá Chưa Sale</th>
+            <th scope="col" colspan="2">Giá Sale</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each items}}
+            <tr>
+            <td>
+              <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="itemcheckboxIDs[]" value="{{this._id}}">
+              </div>
+            </td>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.description}}</td>
+            <td>{{this.priceOld}}</td>
+            <td>{{this.priceNew}}</td>
+            <td>
+                <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Khôi phục</a>
+                <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-item-modal">Xóa vĩnh viễn</a>
+            </td>
+            </tr>
+            {{else}}
+            <tr>
+              <td colspan="5" class="text-center">
+                Thùng rác trống.
+                <a href="/me/stored/items">Danh sách sản phẩm</a>
+              </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+</form>
+
+
+<div id="delete-item-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa vĩnh viễn</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Hành động này không thể khôi phục.Bạn có chắc chắn muốn xóa vĩnh viễn không?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button id="btn-delete-item" type="button" class="btn btn-danger">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form name="delete-item-form" method="POST"></form>
+<form name="restore-item-form" method="POST"></form>
+
+<script>
+
+      document.addEventListener("DOMContentLoaded", function() {
+          
+          var itemId;
+          var deleteForm = document.forms['delete-item-form'];
+          var restoreForm = document.forms['restore-item-form'];
+          var btnDeleteItem = document.getElementById("btn-delete-item");
+
+          var checkboxAll = $('#checkbox-all');
+          var itemCheckbox = $('input[name="itemcheckboxIDs[]"]');
+          var btnCheckAllSubmit = $('.btn-check-all-submit');
+          var containerFormItem = document.forms['container-form-item'];
+
+
+          //$ : jquery lấy ra tất cả các btn restore
+          var btnRestore =$('.btn-restore');
+          
+          
+          //when dialog delete confirm clicked         
+          $('#delete-item-modal').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget); 
+          itemId = button.data('id'); 
+          });
+          //when delete item btn clicked
+          btnDeleteItem.onclick = function () {
+          deleteForm.action = '/items/' + itemId + '/destroy?_method=DELETE';
+          deleteForm.submit();
+          }
+          //Restore btn clicked
+          btnRestore.click(function (e){
+            e.preventDefault();
+            var itemId = $(this).data('id');
+            restoreForm.action = '/items/' + itemId + '/restore?_method=PATCH';
+            restoreForm.submit();
+          });
+
+          // checkbox all changed
+          checkboxAll.change(function() {
+            var isCheckedAll = $(this).prop('checked');
+            itemCheckbox.prop('checked',isCheckedAll);
+            renderCheckAllSubmitBtn();
+          });
+          //item checkbox changed
+          itemCheckbox.change(function() {
+            var isCheckedAll = itemCheckbox.length === $('input[name="itemcheckboxIDs[]"]:checked').length;
+            checkboxAll.prop('checked',isCheckedAll);
+            renderCheckAllSubmitBtn();
+          });
+          //Check all submit button clicked
+          btnCheckAllSubmit.on('submit',function(e){
+            var isSubmittable = !$(this).hasClass('disabled');
+
+            if(!isSubmittable){
+                e.preventDefault();
+            }
+          });
+          //Re-render check all submit btn
+          function renderCheckAllSubmitBtn(){
+            var checkedCount = $('input[name="itemcheckboxIDs[]"]:checked').length;
+            if(checkedCount>0){
+                btnCheckAllSubmit.removeClass('disabled');
+            }else{
+                btnCheckAllSubmit.addClass('disabled');
+            }
+          }
+          console.log(containerFormItem);
+});
+</script>

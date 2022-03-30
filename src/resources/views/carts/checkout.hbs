@@ -1,0 +1,100 @@
+<form action="/carts/checkout" method="post" id="checkout-form">
+    <div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="card my-4 p-3">
+            <div class="row main">
+                <div id="charge-error" class="height-div col-12 alert alert-danger {{#if noError}}hidden{{/if}}">
+                    {{errMsg}}
+                </div>
+            </div>
+            <div class="row main">
+                <div class="col-12"><span>Cart</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>Shipping confirmation</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>Credit card checkout</span></div>
+            </div>
+            <div class="row justify-content-center mrow">
+                <div class="col-12"> <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" width="35px" height="35px" /> <img src="https://img.icons8.com/color/48/000000/visa.png" width="35px" height="35px" /> <img src="https://img.icons8.com/color/48/000000/paypal.png" width="35px" height="35px" /> </div>
+            </div>
+            <form class="form-card">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group"> 
+                            <label class="form-control-placeholder p-0" for="name">Name</label> 
+                            <input type="text" class="height-div form-control p-0" id="name" name="name" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group"> 
+                            <label class="form-control-placeholder p-0" for="address">Address</label> 
+                            <input type="text" class="height-div form-control p-0" id="address" name="address" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group"> 
+                            <label class="form-control-placeholder p-0" for="card-name">Cardholder'sName</label> 
+                            <input type="text" class="height-div form-control p-0" id="card-name" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-12">
+                    <div class="form-group"> 
+                        <label class="form-control-placeholder p-0" for="card-number">Credit Card Number</label> 
+                        <input type="text" class="height-div form-control p-0" id="card-number" required>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-12">
+                    <div class="form-group"> 
+                        <label class="form-control-placeholder p-0" for="card-expiry-month">Expiration Month</label> 
+                        <input type="text" class="height-div form-control p-0" id="card-expiry-month" required>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-12">
+                    <div class="form-group"> 
+                        <label class="form-control-placeholder p-0" for="card-expiry-year">Expiration Year</label> 
+                        <input type="text" class="height-div form-control p-0" id="card-expiry-year" required>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group"> 
+                        <label class="form-control-placeholder p-0" for="card-cvc">CVC</label> 
+                        <input type="text" class="height-div form-control p-0" id="card-cvc" required>
+                    </div>
+                </div>
+                </div>
+                <div class="row lrow mt-4 mb-3">
+                    <div class="col-sm-8 col-12">
+                        <h3>Grand Total:</h3>
+                    </div>
+                    <div class="col-sm-4 col-12">
+                        <h5>&#36;{{total}}</h5>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-12"> 
+                        <button type="button" class="btn__pay-paypal btn btn-primary btn-block">Pay</button>                        
+                    </div>
+                     <div class="col-sm-12"> 
+                        <button type="submit" class="btn__pay-stripe btn btn-primary btn-block">Pay Now</button>                        
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</form>
+{{!-- <form name="pay-item-form" action="/carts/checkout" method="POST"></form> --}}
+<script src="https://js.stripe.com/v3/"></script>
+<script src="javacripts/checkout.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var payItemForm = document.forms['pay-item-form'];
+    var btnPaypal = document.querySelector('.btn__pay-paypal');
+    btnPaypal.onclick = function(){
+        payItemForm.submit();
+    }
+    })
+</script>

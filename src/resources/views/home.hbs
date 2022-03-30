@@ -1,0 +1,145 @@
+<div class="row">
+    <div class="col-sm-6 col-md4 col-md-offset-4 col-sm-offset-3">
+        <div id="success" class="alert alert-success"{{#if noMessages}}hidden{{/if}}>
+            {{successMsg}}
+        </div>
+    </div>
+</div>
+            <div class="grid">
+                <div class="gird__row app__content">
+                    <div class="grid__column-2">
+                        <nav class="category">
+                            <h3 class="category__heading">
+                                <i class="category__heading-icon fa-solid fa-list"></i>
+                                Danh mục
+                            </h3>
+            
+                            <ul class="category-list">
+                                <li class="category-item category-item--active">
+                                    <a href="#" class="category-item__link">Trang điểm mặt</a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="#" class="category-item__link">Trang điểm mắt</a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="#" class="category-item__link">Trang điểm môi</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="grid__column-10">
+                        <div class="home-filter">
+                            <span class="home-filter__label">Sắp xếp theo</span>
+                            <button class="home-filter__btn btn">Phổ biến</button>
+                            <button class="home-filter__btn btn btn--primary">Mới nhất</button>
+                            <button class="home-filter__btn btn">Bán chạy</button>
+
+                            <div class="select-input">
+                                <span class="select-input__label">Giá</span>
+                                <i class="fa-solid fa-chevron-down select-input__label-icon"></i>
+                                <ul class="select-input__list">
+                                    <li class="select-input__item">
+                                        <a href="" class="select-input__link">Giá:Thấp đến cao</a>
+                                    </li>
+                                    <li class="select-input__item">
+                                        <a href="" class="select-input__link">Giá:Cao đến thấp</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="home-filter__page">
+                                <span class="home-filter__page-num">
+                                    <span class="home-filter__page-current">1</span>
+                                    /
+                                    <span class="home-filter__page-total">14</span>
+                                </span>
+                                <div class="home-filter__page-control">
+                                        <a href="" class="home-filter__page-btn home-filter__page-btn--disabled">
+                                            <i class="home-filter__page-icon fa-solid fa-chevron-left"></i>
+                                        </a>
+                                        <a href="" class="home-filter__page-btn">
+                                            <i class="home-filter__page-icon fa-solid fa-chevron-right"></i>
+                                        </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="home-product">
+                            <!-- Grid ->Row ->Column -->
+                            <div class="grid__row">
+                                <!-- Product item -->
+                                {{#each items}}
+                                <div class="grid__column-2-4">
+                                    <a href="/items/{{this.slug}}" class="home-product-item">
+                                        <div class="home-product-item__img" style="background-image: url({{this.img}});"></div>
+                                        <h4 class="home-product-item__name">{{this.description}}</h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">{{this.priceOld}}</span>
+                                            <span class="home-product-item__price-current">{{this.priceNew}}</span>
+                                        </div>
+                                        <div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__liked">
+                                                <i class="home-product-item__unlike-icon far fa-heart"></i>
+                                                <i class="home-product-item__like-icon fas fa-heart"></i>
+                                            </span>
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">88 đã bán</span>
+                                        </div>
+                                        <div class="home-product-item__origin">
+                                            <span class="home-product-item__brand">{{this.producer}}</span>
+                                            <span class="home-product-item__origin-name">{{this.place}}</span>
+                                        </div>
+                                        <div class="home-product-item__farvourite">
+                                            <i class="fa-solid fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">10%</span>
+                                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                {{/each}}  
+                            </div>
+                        </div>
+                         <ul class="pagination home-product__pagination">
+                             <li class="pagination-item">
+                                 <a href="" class="pagination-item__link">
+                                     <i class="pagination-item__icon fa-solid fa-chevron-left"></i>
+                                 </a>
+                             </li>
+                             <li class="pagination-item pagination-item--active">
+                                <a href="" class="pagination-item__link">1</a>
+                             </li>
+                             <li class="pagination-item">
+                                <a href="" class="pagination-item__link">2</a>
+                             </li>
+                             <li class="pagination-item">
+                                <a href="" class="pagination-item__link">3</a>
+                             </li>
+                             <li class="pagination-item">
+                                <a href="" class="pagination-item__link">4</a>
+                             </li>
+                             <li class="pagination-item">
+                                <a href="" class="pagination-item__link">5</a>
+                             </li>
+                             <li class="pagination-item">
+                                <a href="" class="pagination-item__link">...</a>
+                             </li>
+                             <li class="pagination-item">
+                                <a href="" class="pagination-item__link">14</a>
+                             </li>
+                             <li class="pagination-item">
+                                <a href="" class="pagination-item__link">
+                                    <i class="pagination-item__icon fa-solid fa-chevron-right"></i>
+                                </a>
+                            </li>
+                         </ul>
+                    </div>
+                </div>
+            </div>

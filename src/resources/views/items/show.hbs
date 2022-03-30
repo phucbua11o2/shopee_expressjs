@@ -1,0 +1,72 @@
+<div class="mt-4">
+    <div class="grid">
+        <div class="gird__row ">
+            <div class="app__content-details">
+                <div class="col-sm-4">
+                    <div class="home-product-item__img" style="background-image: url({{item.img}});"></div>
+                </div>
+                <div class="col-sm-8">
+                    <div>
+                        <h2>{{item.description}}</h2>
+                    </div>
+                    <div class="evaluate-details">
+                        <ul class="evaluate-details-list">
+                            <li class="evaluate-details-list--item evaluate-details-list--star evaluate-details-list--separate">
+                                <span>5.0</span> 
+                                <i class="evaluate-details-item__star fas fa-star"></i>
+                                <i class="evaluate-details-item__star fas fa-star"></i>
+                                <i class="evaluate-details-item__star fas fa-star"></i>
+                                <i class="evaluate-details-item__star fas fa-star"></i>
+                                <i class="evaluate-details-item__star fas fa-star"></i>
+                            </li>
+                            <li class="evaluate-details-list--item evaluate-details-list--separate">
+                                <span>1</span> 
+                                Đánh giá
+                            </li>
+                            <li class="evaluate-details-list--item">
+                                <span>3,5k</span>
+                                Đã bán
+                            </li>  
+                        </ul>
+                    </div>
+                    <div class="app__content-details-price">
+                        <span class="app__content-details-currency">&#8363;</span>
+                        <h2 class="app__content-details-number">{{item.priceNew}}</h2>
+                    </div>
+                    <div class="app__content-details-transport">
+                        <div class="transport">
+                            <span>Vận Chuyển</span>
+                        </div>
+                        <div class="details-transport">
+                            <div class="details-transport-free">
+                                <div>
+                                <i class="fa-solid fa-truck-fast"></i>
+                                {{!-- <img class="details-transport-freeship" src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/pdp/1cdd37339544d858f4d0ade5723cd477.png" alt=""> --}}
+                                Miễn phí vận chuyển
+                                </div>
+                                <div class="details-transport-ship">
+                                Miễn phí vận chuyển cho đơn hàng trên ₫250.000
+                                </div>
+                            </div>
+                            <div class="details-transport-place">
+                                <div>
+                                <i class="fa-solid fa-truck"></i>
+                                <span class="details-transport-free-truck">Vận Chuyển Tới</span>
+                                </div>
+                                <div class="details-transport-place-fee">Phí Vận Chuyển</div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="amount">
+                            Số lượng
+                    </div>
+                    <div class="buy-items">
+                            <button class="btn btn--normal btn-add-cart">Thêm vào giỏ hàng</button>
+                            <a href="/carts/add-to-cart/{{item._id}}" class="btn btn--primary btn-buy-now">Mua ngay</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

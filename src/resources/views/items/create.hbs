@@ -1,0 +1,37 @@
+<div class="app__container">
+<div class="grid">
+    <div class="create_items">
+    
+    <h3>Tạo mới sản phẩm</h3>
+
+    <form method="POST" action="/items/store">
+        <div class="form-group">
+            <label for="img">Hình ảnh</label>
+            <input type="text" class="form-control" id="img" name="img">
+        </div>
+        <div class="form-group">
+            <label for="description">Mô tả</label>
+            <input type="text" class="form-control" id="description" name="description">
+        </div> 
+        <div class="form-group">
+            <label for="producer">Nhà sản xuất</label>
+            <input type="text" class="form-control" id="producer" name="producer">
+        </div> 
+        <div class="form-group">
+            <label for="place">Địa chỉ</label>
+            <input type="text" class="form-control" id="place" name="place">
+        </div> 
+        <div class="form-group">
+            <label for="priceOld">Giá chưa sale</label>
+            <input type="text" class="form-control" id="priceOld" name="priceOld">
+        </div> 
+        <div class="form-group">
+            <label for="priceNew">Giá sale</label>
+            <input type="text" class="form-control" id="priceNew" name="priceNew">
+        </div>       
+    <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+    </form>
+    </div>
+    
+</div>
+</div>
