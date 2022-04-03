@@ -1,5 +1,6 @@
 ﻿# shopee_expressjs
  Description:
+ 
  Home-page
  ![image](https://user-images.githubusercontent.com/64189668/161420585-43341c0d-f28e-4c9d-ae2f-5a731eb0316b.png)
  Register
@@ -7,10 +8,13 @@
  Login
  ![image](https://user-images.githubusercontent.com/64189668/161420645-c508ad1d-7811-43b4-80dc-d6af318b22a2.png)
  Authorization User
+ 
  ![image](https://user-images.githubusercontent.com/64189668/161420741-d8601681-0437-44bc-ad83-8b2580b51625.png)
  Authorization Admin
+ 
  ![image](https://user-images.githubusercontent.com/64189668/161420764-ffee1b4d-9575-4529-804e-84cc292c1072.png)
  Cart
+ 
  ![image](https://user-images.githubusercontent.com/64189668/161420772-fcc81646-7e97-4393-a234-d1ac6a224c26.png)
  Checkout use Stripe payment
  ![image](https://user-images.githubusercontent.com/64189668/161420794-99165ab2-1ea2-46d2-911b-4ec12d866760.png)
